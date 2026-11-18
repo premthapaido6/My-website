@@ -1,0 +1,901 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Secondary School | Tharpu, Tanahun</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #174a83;
+            --secondary: #f4a62a;
+            --light: #f5f8fc;
+            --dark: #172b45;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #444;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.07);
+            padding: 13px 0;
+        }
+
+        .navbar-brand {
+            font-size: 21px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+
+        .navbar-brand small {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            color: #777;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 17px;
+            transition: .3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--secondary);
+        }
+
+        .btn-main {
+            background: var(--secondary);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            border: none;
+            transition: .3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-main:hover {
+            background: #e18d12;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background:
+                linear-gradient(90deg, rgba(12,42,75,.92), rgba(12,42,75,.55)),
+                url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 720px;
+            padding: 90px 0;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            color: #ffd078;
+            background: rgba(255,255,255,.12);
+            padding: 8px 17px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ffbd4a;
+        }
+
+        .hero p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #e4eaf1;
+            margin-bottom: 30px;
+        }
+
+        .btn-outline-light {
+            padding: 11px 24px;
+            font-weight: 500;
+        }
+
+        /* Common Sections */
+        section {
+            padding: 85px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title small {
+            color: var(--secondary);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            color: var(--dark);
+            font-size: 34px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        /* About */
+        .about-img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .about-content h2 {
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 14px;
+            line-height: 2;
+            color: #666;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 15px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .about-feature i {
+            color: #fff;
+            background: var(--primary);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* Stats */
+        .stats {
+            background: var(--primary);
+            padding: 45px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-box i {
+            font-size: 32px;
+            color: #ffbd4a;
+        }
+
+        .stat-box h3 {
+            font-size: 30px;
+            font-weight: 700;
+            margin: 10px 0 5px;
+        }
+
+        .stat-box p {
+            font-size: 13px;
+            margin: 0;
+            color: #dce7f3;
+        }
+
+        /* Programs */
+        .program-section {
+            background: var(--light);
+        }
+
+        .program-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 35px 25px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 5px 25px rgba(0,0,0,.04);
+            transition: .3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            border-bottom-color: var(--secondary);
+            box-shadow: 0 10px 30px rgba(0,0,0,.1);
+        }
+
+        .program-icon {
+            width: 70px;
+            height: 70px;
+            background: #eaf1fa;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+
+        .program-card h4 {
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .program-card p {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.8;
+        }
+
+        /* Why Choose Us */
+        .why-section {
+            background: #fff;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .why-item i {
+            font-size: 25px;
+            color: var(--secondary);
+        }
+
+        .why-item h5 {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 17px;
+        }
+
+        .why-item p {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.8;
+        }
+
+        .why-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Admission */
+        .admission {
+            background: linear-gradient(100deg, #174a83, #102e52);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .admission h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .admission p {
+            color: #dce7f3;
+            margin-bottom: 25px;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--light);
+        }
+
+        .contact-card {
+            background: #fff;
+            padding: 30px 22px;
+            border-radius: 10px;
+            height: 100%;
+            box-shadow: 0 4px 20px rgba(0,0,0,.04);
+        }
+
+        .contact-card i {
+            font-size: 28px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .contact-card h5 {
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .contact-card p,
+        .contact-card a {
+            font-size: 13px;
+            color: #777;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 330px;
+            border: 0;
+            border-radius: 10px;
+            margin-top: 35px;
+        }
+
+        /* Footer */
+        footer {
+            background: #10243c;
+            color: #d1dbe7;
+            padding: 55px 0 20px;
+        }
+
+        footer h4,
+        footer h5 {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        footer p,
+        footer a {
+            font-size: 13px;
+            line-height: 2;
+            color: #b8c6d6;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #304258;
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .hero {
+                min-height: 520px;
+                background-position: center;
+            }
+
+            .hero-content {
+                padding: 70px 15px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 27px;
+            }
+
+            .about-img {
+                height: 280px;
+                margin-bottom: 25px;
+            }
+
+            .why-image {
+                height: 280px;
+                margin-top: 20px;
+            }
+
+            .admission h2 {
+                font-size: 25px;
+            }
+
+            .navbar .btn-main {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#home">
+            MIN <span>SECONDARY SCHOOL</span>
+            <small>THARPU, TANAHUN, NEPAL</small>
+        </a>
+
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+                <li class="nav-item"><a class="nav-link" href="#why-us">Why Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item">
+                    <a href="#contact" class="btn-main ms-lg-3">Admission Enquiry</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <span class="hero-tag">Welcome to Min Secondary School</span>
+            <h1>Building Knowledge.<br>Shaping <span>Futures.</span></h1>
+            <p>
+                A place where learning inspires, potential grows,
+                and every student gets the opportunity to achieve
+                their dreams.
+            </p>
+            <a href="#about" class="btn-main me-2">Discover More</a>
+            <a href="#contact" class="btn btn-outline-light">Contact Us</a>
+        </div>
+    </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <img class="about-img"
+                    src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=80"
+                    alt="School learning environment">
+            </div>
+
+            <div class="col-lg-6 about-content">
+                <small style="color:#f4a62a;font-weight:700;letter-spacing:2px">
+                    ABOUT OUR SCHOOL
+                </small>
+                <h2>Welcome to Min Secondary School</h2>
+
+                <p>
+                    Min Secondary School is located in the heart of
+                    Tharpu Bazar, Myagde-4, Tharpu, Tanahun,
+                    Gandaki Province, Nepal.
+                </p>
+
+                <p>
+                    We are committed to providing quality education
+                    from Nursery to Grade 12 in a supportive and
+                    student-friendly learning environment.
+                    Our aim is to develop knowledgeable, responsible,
+                    confident and capable individuals.
+                </p>
+
+                <div class="about-feature">
+                    <i class="bi bi-check-lg"></i>
+                    Nursery to Grade 12
+                </div>
+
+                <div class="about-feature">
+                    <i class="bi bi-check-lg"></i>
+                    Education and Management Streams
+                </div>
+
+                <div class="about-feature">
+                    <i class="bi bi-check-lg"></i>
+                    Learning for a Better Future
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-6 col-lg-3">
+                <div class="stat-box">
+                    <i class="bi bi-book"></i>
+                    <h3>Nursery–12</h3>
+                    <p>Education Levels</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="stat-box">
+                    <i class="bi bi-mortarboard"></i>
+                    <h3>2</h3>
+                    <p>Academic Streams</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="stat-box">
+                    <i class="bi bi-people"></i>
+                    <h3>Students</h3>
+                    <p>Our Learning Community</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="stat-box">
+                    <i class="bi bi-geo-alt"></i>
+                    <h3>Tharpu</h3>
+                    <p>Tanahun, Nepal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PROGRAMS -->
+<section class="program-section" id="programs">
+    <div class="container">
+        <div class="section-title">
+            <small>What We Offer</small>
+            <h2>Our Academic Programs</h2>
+            <p>Providing educational opportunities for every stage of learning.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="bi bi-pencil-square"></i>
+                    </div>
+                    <h4>Basic Education</h4>
+                    <p>
+                        Nursery to Grade 8. Building strong foundations
+                        through quality education, creativity and learning.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="bi bi-mortarboard"></i>
+                    </div>
+                    <h4>Secondary Education</h4>
+                    <p>
+                        Grades 9 and 10. Developing knowledge, skills
+                        and confidence for future academic success.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="bi bi-building"></i>
+                    </div>
+                    <h4>Higher Secondary</h4>
+                    <p>
+                        Grades 11 and 12 with two academic streams:
+                        Education and Management.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title mt-5 mb-4">
+            <small>Grade 11 & 12</small>
+            <h2>Our Available Streams</h2>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-5">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="bi bi-journal-bookmark"></i>
+                    </div>
+                    <h4>Education</h4>
+                    <p>
+                        Developing future educators with academic
+                        knowledge, teaching skills and professional values.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="bi bi-briefcase"></i>
+                    </div>
+                    <h4>Management</h4>
+                    <p>
+                        Preparing students with business knowledge,
+                        leadership skills and management concepts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why-us" class="why-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <small style="color:#f4a62a;font-weight:700;letter-spacing:2px">
+                    WHY CHOOSE US
+                </small>
+
+                <h2 style="font-weight:700;color:#172b45;margin:12px 0 30px">
+                    Education That Makes a Difference
+                </h2>
+
+                <div class="why-item">
+                    <i class="bi bi-book-half"></i>
+                    <div>
+                        <h5>Quality Education</h5>
+                        <p>Focus on meaningful learning and academic development.</p>
+                    </div>
+                </div>
+
+                <div class="why-item">
+                    <i class="bi bi-person-hearts"></i>
+                    <div>
+                        <h5>Student-Centred Learning</h5>
+                        <p>Encouraging students to explore, learn and grow.</p>
+                    </div>
+                </div>
+
+                <div class="why-item">
+                    <i class="bi bi-lightbulb"></i>
+                    <div>
+                        <h5>Knowledge and Creativity</h5>
+                        <p>Developing critical thinking and creative abilities.</p>
+                    </div>
+                </div>
+
+                <div class="why-item">
+                    <i class="bi bi-people-fill"></i>
+                    <div>
+                        <h5>Supportive Environment</h5>
+                        <p>Promoting respect, discipline and personal growth.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <img class="why-image"
+                    src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1000&q=80"
+                    alt="Students studying together">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ADMISSION -->
+<section class="admission">
+    <div class="container">
+        <h2>Give Your Child a Bright Future!</h2>
+        <p>
+            Join Min Secondary School and take the first step
+            towards a successful future.
+        </p>
+        <a href="tel:065400048" class="btn-main">
+            <i class="bi bi-telephone-fill me-2"></i>
+            Enquire About Admission
+        </a>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <div class="section-title">
+            <small>Get In Touch</small>
+            <h2>Contact Our School</h2>
+            <p>We would love to hear from you. Feel free to contact us.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="contact-card text-center">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <h5>Our Location</h5>
+                    <p>
+                        Min Secondary School<br>
+                        Myagde-4, Tharpu Bazar,<br>
+                        Tanahun, Gandaki Province, Nepal
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="contact-card text-center">
+                    <i class="bi bi-envelope-fill"></i>
+                    <h5>Email Address</h5>
+                    <p>
+                        <a href="mailto:minsecondary@gmail.com">
+                            minsecondary@gmail.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="contact-card text-center">
+                    <i class="bi bi-telephone-fill"></i>
+                    <h5>Phone Numbers</h5>
+                    <p>
+                        <a href="tel:065400048">065-400048</a><br>
+                        <a href="tel:9846062271">9846062271 (Principal)</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google Map -->
+        <iframe
+            class="map-frame"
+            src="https://maps.google.com/maps?q=Tharpu%20Bazar%2C%20Myagde%2C%20Tanahun%2C%20Nepal&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map showing Tharpu Bazar, Tanahun">
+        </iframe>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <h4>Min Secondary School</h4>
+                <p>
+                    Located in Tharpu Bazar, Myagde-4, Tanahun,
+                    Gandaki Province, Nepal. Dedicated to providing
+                    educational opportunities and shaping bright futures.
+                </p>
+            </div>
+
+            <div class="col-lg-3">
+                <h5>Quick Links</h5>
+                <p><a href="#home">Home</a></p>
+                <p><a href="#about">About Us</a></p>
+                <p><a href="#programs">Academic Programs</a></p>
+                <p><a href="#contact">Contact</a></p>
+            </div>
+
+            <div class="col-lg-4">
+                <h5>Contact Information</h5>
+                <p><i class="bi bi-geo-alt me-2"></i>Myagde-4, Tharpu, Tanahun</p>
+                <p><i class="bi bi-envelope me-2"></i>minsecondary@gmail.com</p>
+                <p><i class="bi bi-telephone me-2"></i>065-400048</p>
+                <p><i class="bi bi-phone me-2"></i>9846062271</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; <span id="year"></span> Min Secondary School.
+            All Rights Reserved.
+            <br>
+            Designed with <i class="bi bi-heart-fill text-danger"></i>
+            for Education.
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Automatically update copyright year
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+    // Close mobile menu after clicking a navigation link
+    document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+            const menu = document.getElementById("navbarNav");
+            const bsCollapse = bootstrap.Collapse.getInstance(menu);
+
+            if (bsCollapse) {
+                bsCollapse.hide();
+            }
+        });
+    });
+
+    // Highlight active navigation section
+    const sections = document.querySelectorAll("header[id], section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+        let current = "home";
+
+        sections.forEach(section => {
+            if (window.scrollY >= section.offsetTop - 150) {
+                current = section.id;
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.toggle(
+                "active",
+                link.getAttribute("href") === "#" + current
+            );
+        });
+    });
+</script>
+
+</body>
+</html>
